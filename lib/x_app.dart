@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'core/routing/app_router.dart';
+import 'core/routing/routes.dart';
+import 'core/theming/colors.dart';
 
 class XApp extends StatelessWidget {
-  const XApp({super.key});
+  final AppRouter appRouter;
+
+  const XApp({super.key, required this.appRouter});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'X',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: null,
-    );
+    return ScreenUtilInit(
+        designSize: const Size(375, 812),
+        minTextAdapt: true,
+        child: MaterialApp(
+          title: 'Doc App',
+          theme: ThemeData(
+            primaryColor: ColorsManager.mainBlue,
+            scaffoldBackgroundColor: Colors.white,
+          ),
+          debugShowCheckedModeBanner: false,
+          initialRoute: Routes.onBoardingScreen,
+          onGenerateRoute: appRouter.generateRoute,
+        ));
   }
 }
