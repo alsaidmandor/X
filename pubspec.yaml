@@ -35,6 +35,26 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
+  #  firebase
+  firebase_core: ^2.26.0
+  firebase_auth: ^4.17.7
+  firebase_storage: ^11.6.8
+  cloud_firestore: ^4.15.7
+  # State management
+  flutter_bloc: ^8.1.4
+  # Code generator (mainly used with cubit )
+  freezed: ^2.4.7
+  freezed_annotation: ^2.4.1
+  # for dependency injection
+  get_it: ^7.6.7
+  # localization
+  intl: ^0.19.0
+  # An SVG rendering and widget library for Flutter, which allows painting
+  flutter_svg: ^2.0.10+1
+  # for adapting screen and font size.
+  flutter_screenutil: ^5.9.0
+  # for splash screen
+  flutter_native_splash: ^2.3.10
 
 dev_dependencies:
   flutter_test:
