@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "823889737434",
+    "project_id": "xtwitter-4bb42",
+    "storage_bucket": "xtwitter-4bb42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:823889737434:android:03cd4878cdc2773673d7e3",
+        "android_client_info": {
+          "package_name": "com.example.x"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2hyOSOlwdkAvkquFTMbPo9GZBWGxpXFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
