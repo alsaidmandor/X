@@ -45,6 +45,11 @@ dependencies:
   # Code generator (mainly used with cubit )
   freezed: ^2.4.7
   freezed_annotation: ^2.4.1
+  #A build system for Dart code generation and modular compilation
+  build_runner: ^2.4.7
+  # Automatically generate code for converting to and from JSON by annotating Dart classes
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
   # for dependency injection
   get_it: ^7.6.7
   # localization
@@ -55,6 +60,12 @@ dependencies:
   flutter_screenutil: ^5.9.0
   # for splash screen
   flutter_native_splash: ^2.3.10
+  # for downloading image
+  cached_network_image: ^3.3.1
+  # for downloading video
+  video_player: ^2.8.3
+  #  shared preferences for storing data in device
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
