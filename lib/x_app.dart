@@ -16,7 +16,7 @@ class XApp extends StatelessWidget {
         designSize: const Size(375, 812),
         minTextAdapt: true,
         child: MaterialApp(
-          title: 'Doc App',
+          title: 'X',
           theme: ThemeData(
             primaryColor: ColorsManager.mainBlue,
             scaffoldBackgroundColor: Colors.white,
