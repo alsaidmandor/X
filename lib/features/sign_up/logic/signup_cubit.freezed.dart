@@ -24,7 +24,6 @@ mixin _$SignupState<T> {
     required TResult Function(String error) signupError,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
@@ -42,7 +41,6 @@ mixin _$SignupState<T> {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial<T> value) initial,
@@ -51,7 +49,6 @@ mixin _$SignupState<T> {
     required TResult Function(SignupError<T> value) signupError,
   }) =>
       throw _privateConstructorUsedError;
-
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial<T> value)? initial,
@@ -83,9 +80,9 @@ class _$SignupStateCopyWithImpl<T, $Res, $Val extends SignupState<T>>
     implements $SignupStateCopyWith<T, $Res> {
   _$SignupStateCopyWithImpl(this._value, this._then);
 
-// ignore: unused_field
+  // ignore: unused_field
   final $Val _value;
-// ignore: unused_field
+  // ignore: unused_field
   final $Res Function($Val) _then;
 }
 
@@ -107,12 +104,18 @@ class __$$InitialImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$InitialImpl<T> implements _Initial<T> {
+class _$InitialImpl<T> with DiagnosticableTreeMixin implements _Initial<T> {
   const _$InitialImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignupState<$T>.initial()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'SignupState<$T>.initial'));
   }
 
   @override
@@ -221,12 +224,21 @@ class __$$SignupLoadingImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$SignupLoadingImpl<T> implements SignupLoading<T> {
+class _$SignupLoadingImpl<T>
+    with DiagnosticableTreeMixin
+    implements SignupLoading<T> {
   const _$SignupLoadingImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignupState<$T>.signupLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'SignupState<$T>.signupLoading'));
   }
 
   @override
@@ -350,15 +362,25 @@ class __$$SignupSuccessImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$SignupSuccessImpl<T> implements SignupSuccess<T> {
+class _$SignupSuccessImpl<T>
+    with DiagnosticableTreeMixin
+    implements SignupSuccess<T> {
   const _$SignupSuccessImpl(this.data);
 
   @override
   final T data;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignupState<$T>.signupSuccess(data: $data)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignupState<$T>.signupSuccess'))
+      ..add(DiagnosticsProperty('data', data));
   }
 
   @override
@@ -497,15 +519,25 @@ class __$$SignupErrorImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$SignupErrorImpl<T> implements SignupError<T> {
+class _$SignupErrorImpl<T>
+    with DiagnosticableTreeMixin
+    implements SignupError<T> {
   const _$SignupErrorImpl({required this.error});
 
   @override
   final String error;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'SignupState<$T>.signupError(error: $error)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'SignupState<$T>.signupError'))
+      ..add(DiagnosticsProperty('error', error));
   }
 
   @override

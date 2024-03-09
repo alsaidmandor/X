@@ -3,7 +3,7 @@ import 'package:x/features/sign_up/data/models/user_model.dart';
 
 import '../../../../core/networking/firebase_constsnts.dart';
 import '../../../../core/networking/firebase_result.dart';
-import '../../../../core/utilits/Utility.dart';
+import '../../../../core/utilits/utility.dart';
 
 class SignupRepo {
   Future<FirebaseResult<UserCredential>> signUp(
