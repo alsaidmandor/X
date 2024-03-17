@@ -7,7 +7,6 @@ import 'package:x/features/home/ui/widget/home_screen_drawer.dart';
 import '../../../core/theming/app_icons.dart';
 import '../../../core/theming/colors.dart';
 import '../../../core/widget/x_logo.dart';
-import '../../sign_up/data/models/user_model.dart';
 import '../logic/home_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -60,7 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
         }
 
         if (state is HomeSuccess) {
-          profile = state.user;
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('Get Profile Successful'),
           ));
