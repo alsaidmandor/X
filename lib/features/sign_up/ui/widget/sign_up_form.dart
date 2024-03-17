@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x/features/sign_up/ui/widget/password_validations.dart';
 
@@ -50,96 +51,110 @@ class _SignupFormState extends State<SignupForm> {
   Widget build(BuildContext context) {
     return Form(
       key: context.read<SignupCubit>().formKey,
-      child: Column(
-        children: [
-          AppTextFormField(
-            hintText: 'Name',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid name';
-              }
-            },
-            controller: context.read<SignupCubit>().nameController,
-          ),
-          verticalSpace(18),
-          AppTextFormField(
-            hintText: 'Phone number',
-            validator: (value) {
-              if (value == null ||
-                  value.isEmpty ||
-                  !AppRegex.isPhoneNumberValid(value)) {
-                return 'Please enter a valid phone number';
-              }
-            },
-            controller: context.read<SignupCubit>().phoneController,
-          ),
-          verticalSpace(18),
-          AppTextFormField(
-            hintText: 'Email',
-            validator: (value) {
-              if (value == null ||
-                  value.isEmpty ||
-                  !AppRegex.isEmailValid(value)) {
-                return 'Please enter a valid email';
-              }
-            },
-            controller: context.read<SignupCubit>().emailController,
-          ),
-          verticalSpace(18),
-          AppTextFormField(
-            controller: context.read<SignupCubit>().passwordController,
-            hintText: 'Password',
-            isObscureText: isPasswordObscureText,
-            suffixIcon: GestureDetector(
-              onTap: () {
-                setState(() {
-                  isPasswordObscureText = !isPasswordObscureText;
-                });
+      child: AutofillGroup(
+        child: Column(
+          children: [
+            AppTextFormField(
+              hintText: 'Name',
+              autoFillHint: const [AutofillHints.name],
+              textInputAction: TextInputAction.next,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter a valid name';
+                }
               },
-              child: Icon(
-                isPasswordObscureText ? Icons.visibility_off : Icons.visibility,
-              ),
+              controller: context.read<SignupCubit>().nameController,
             ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
-              }
-            },
-          ),
-          verticalSpace(18),
-          AppTextFormField(
-            controller:
-                context.read<SignupCubit>().passwordConfirmationController,
-            hintText: 'Password Confirmation',
-            isObscureText: isPasswordConfirmationObscureText,
-            suffixIcon: GestureDetector(
-              onTap: () {
-                setState(() {
-                  isPasswordConfirmationObscureText =
-                      !isPasswordConfirmationObscureText;
-                });
+            verticalSpace(18),
+            AppTextFormField(
+              hintText: 'Phone number',
+              autoFillHint: const [AutofillHints.telephoneNumber],
+              textInputAction: TextInputAction.next,
+              validator: (value) {
+                if (value == null ||
+                    value.isEmpty ||
+                    !AppRegex.isPhoneNumberValid(value)) {
+                  return 'Please enter a valid phone number';
+                }
               },
-              child: Icon(
-                isPasswordConfirmationObscureText
-                    ? Icons.visibility_off
-                    : Icons.visibility,
-              ),
+              controller: context.read<SignupCubit>().phoneController,
             ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter a valid password';
-              }
-            },
-          ),
-          verticalSpace(24),
-          PasswordValidations(
-            hasLowerCase: hasLowercase,
-            hasUpperCase: hasUppercase,
-            hasSpecialCharacters: hasSpecialCharacters,
-            hasNumber: hasNumber,
-            hasMinLength: hasMinLength,
-          ),
-        ],
+            verticalSpace(18),
+            AppTextFormField(
+              hintText: 'Email',
+              autoFillHint: const [AutofillHints.email],
+              textInputAction: TextInputAction.next,
+              validator: (value) {
+                if (value == null ||
+                    value.isEmpty ||
+                    !AppRegex.isEmailValid(value)) {
+                  return 'Please enter a valid email';
+                }
+              },
+              controller: context.read<SignupCubit>().emailController,
+            ),
+            verticalSpace(18),
+            AppTextFormField(
+              controller: context.read<SignupCubit>().passwordController,
+              autoFillHint: const [AutofillHints.password],
+              textInputAction: TextInputAction.next,
+              hintText: 'Password',
+              isObscureText: isPasswordObscureText,
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isPasswordObscureText = !isPasswordObscureText;
+                  });
+                },
+                child: Icon(
+                  isPasswordObscureText
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                ),
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter a valid password';
+                }
+              },
+            ),
+            verticalSpace(18),
+            AppTextFormField(
+              controller:
+                  context.read<SignupCubit>().passwordConfirmationController,
+              hintText: 'Password Confirmation',
+              autoFillHint: const [AutofillHints.password],
+              onEditingComplete: () => TextInput.finishAutofillContext(),
+              isObscureText: isPasswordConfirmationObscureText,
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isPasswordConfirmationObscureText =
+                        !isPasswordConfirmationObscureText;
+                  });
+                },
+                child: Icon(
+                  isPasswordConfirmationObscureText
+                      ? Icons.visibility_off
+                      : Icons.visibility,
+                ),
+              ),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter a valid password';
+                }
+              },
+            ),
+            verticalSpace(24),
+            PasswordValidations(
+              hasLowerCase: hasLowercase,
+              hasUpperCase: hasUppercase,
+              hasSpecialCharacters: hasSpecialCharacters,
+              hasNumber: hasNumber,
+              hasMinLength: hasMinLength,
+            ),
+          ],
+        ),
       ),
     );
   }

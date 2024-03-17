@@ -12,4 +12,13 @@ class Utility {
     userName = '@$name$id';
     return userName;
   }
+
+  static String getFirstLetterFromUserName(String name) {
+    List<String> names = name.split(" ");
+    String initials = '';
+    for (var i = 0; i < names.length; i++) {
+      initials = names[i];
+    }
+    return initials;
+  }
 }
