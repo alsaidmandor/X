@@ -17,6 +17,12 @@ class AppTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String?) validator;
 
+  final List<String>? autoFillHint;
+
+  final TextInputAction? textInputAction;
+
+  final Function()? onEditingComplete;
+
   const AppTextFormField({
     super.key,
     this.contentPadding,
@@ -30,12 +36,18 @@ class AppTextFormField extends StatelessWidget {
     this.backgroundColor,
     this.controller,
     required this.validator,
+    this.autoFillHint,
+    this.textInputAction,
+    this.onEditingComplete,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textInputAction: textInputAction,
+      autofillHints: autoFillHint,
       controller: controller,
+      onEditingComplete: onEditingComplete,
       decoration: InputDecoration(
         isDense: true,
         contentPadding: contentPadding ??

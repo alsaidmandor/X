@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,9 +30,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   @override
   void initState() {
     super.initState();
-    passwordController = context
-        .read<LoginCubit>()
-        .passwordController;
+    passwordController = context.read<LoginCubit>().passwordController;
     setupPasswordControllerListener();
   }
 
@@ -51,13 +50,14 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: context
-          .read<LoginCubit>()
-          .formKey,
-      child: Column(
+      key: context.read<LoginCubit>().formKey,
+      child: AutofillGroup(
+          child: Column(
         children: [
           AppTextFormField(
             hintText: 'Email',
+            autoFillHint: const [AutofillHints.email],
+            textInputAction: TextInputAction.next,
             validator: (value) {
               if (value == null ||
                   value.isEmpty ||
@@ -65,17 +65,15 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                 return 'Please enter a valid email';
               }
             },
-            controller: context
-                .read<LoginCubit>()
-                .emailController,
+            controller: context.read<LoginCubit>().emailController,
           ),
           verticalSpace(18),
           AppTextFormField(
-            controller: context
-                .read<LoginCubit>()
-                .passwordController,
+            controller: context.read<LoginCubit>().passwordController,
             hintText: 'Password',
+            autoFillHint: const [AutofillHints.password],
             isObscureText: isObscureText,
+            onEditingComplete: () => TextInput.finishAutofillContext(),
             suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {
@@ -101,7 +99,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
             hasMinLength: hasMinLength,
           ),
         ],
-      ),
+      )),
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 extension Navigation on BuildContext {
@@ -17,4 +18,14 @@ extension Navigation on BuildContext {
   }
 
   void pop() => Navigator.of(this).pop();
+}
+
+extension WidgetExtension on Widget? {
+  /// add tap to parent widget
+  Widget onTap(Function? function) {
+    return GestureDetector(
+      onTap: function as void Function()?,
+      child: this,
+    );
+  }
 }
