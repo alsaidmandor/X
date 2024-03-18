@@ -13,7 +13,15 @@ class XApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var uId = CacheHelper.getData(key: 'uId');
+    var uId;
+
+    if (CacheHelper.getData(key: 'uId') != null) {
+      print("uId => ${CacheHelper.getData(key: 'uId').toString()}");
+      uId = CacheHelper.getData(key: 'uId');
+    } else {
+      CacheHelper.saveData(key: 'uId', value: null);
+      print("uId => ${CacheHelper.getData(key: 'uId').toString()}");
+    }
     return ScreenUtilInit(
         designSize: const Size(375, 812),
         minTextAdapt: true,
@@ -25,7 +33,7 @@ class XApp extends StatelessWidget {
           ),
           debugShowCheckedModeBanner: false,
           initialRoute:
-              uId.isNotEmpty ? Routes.homeScreen : Routes.onBoardingScreen,
+              uId != null ? Routes.homeScreen : Routes.onBoardingScreen,
           onGenerateRoute: appRouter.generateRoute,
         ));
   }
