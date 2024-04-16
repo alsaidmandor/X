@@ -17,6 +17,7 @@ class AppIcon {
   static const IconData homeFill = IconData(0xF553, fontFamily: _kFontFam);
   static const IconData heartEmpty = IconData(0xf148, fontFamily: _kFontFam);
   static const IconData heartFill = IconData(0xf015, fontFamily: _kFontFam);
+  static const IconData back = IconData(0xF045, fontFamily: _kFontFam);
 
   static const IconData chat = IconData(0xF054, fontFamily: _kFontFam);
   static const IconData chatFill = IconData(0xF554, fontFamily: _kFontFam);

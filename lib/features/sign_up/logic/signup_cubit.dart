@@ -7,6 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:x/core/utilits/constants_image.dart';
 
 import '../../../core/helper/cache_helper.dart';
+import '../../../core/utilits/utility.dart';
 import '../data/models/user_model.dart';
 import '../data/repository/sign_up_repo.dart';
 
@@ -51,7 +52,8 @@ class SignupCubit extends Cubit<SignupState> {
         password: passwordController.text,
         user: user);
     response.when(success: (signupResponse) {
-      CacheHelper.saveData(key: 'uId', value: signupResponse.user!.uid);
+      CacheHelper.saveData(
+          key: CacheConstants.uId, value: signupResponse.user!.uid);
       if (kDebugMode) {
         print(" uId => ${CacheHelper.getData(key: 'uId').toString()}");
       }

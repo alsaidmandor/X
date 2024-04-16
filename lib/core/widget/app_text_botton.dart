@@ -59,9 +59,12 @@ class AppTextButton extends StatelessWidget {
         ),
       ),
       onPressed: onPressed,
-      child: Text(
-        buttonText,
-        style: textStyle,
+      child: Center(
+        child: Text(
+          textAlign: TextAlign.center,
+          buttonText,
+          style: textStyle,
+        ),
       ),
     );
   }

@@ -2,6 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/helper/cache_helper.dart';
+import '../../../core/utilits/utility.dart';
 import '../data/repository/login_repository.dart';
 
 part 'login_cubit.freezed.dart';
@@ -19,10 +21,13 @@ class LoginCubit extends Cubit<LoginState> {
 
   void emitLoginStates() async {
     emit(const LoginState.loginLoading());
-    final response = await _loginRepo
-        .login(email: emailController.text, password: passwordController.text);
+    final response = await _loginRepo.login(
+        email: emailController.text, password: passwordController.text);
     response.when(
       success: (loginResponse) {
+        //  save uid in cache
+        CacheHelper.saveData(
+            key: CacheConstants.uId, value: loginResponse.user!.uid);
         emit(LoginState.loginSuccess(loginResponse));
       },
       failure: (error) {
