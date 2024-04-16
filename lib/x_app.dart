@@ -50,5 +50,6 @@ class XApp extends StatelessWidget {
             onGenerateRoute: appRouter.generateRoute,
           )),
     );
+
   }
 }

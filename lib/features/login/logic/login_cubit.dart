@@ -4,10 +4,10 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/helper/cache_helper.dart';
 import '../../../core/utilits/utility.dart';
+
 import '../data/repository/login_repository.dart';
 
 part 'login_cubit.freezed.dart';
-
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -25,9 +25,11 @@ class LoginCubit extends Cubit<LoginState> {
         email: emailController.text, password: passwordController.text);
     response.when(
       success: (loginResponse) {
+
         //  save uid in cache
         CacheHelper.saveData(
             key: CacheConstants.uId, value: loginResponse.user!.uid);
+
         emit(LoginState.loginSuccess(loginResponse));
       },
       failure: (error) {
