@@ -1,3 +1,9 @@
+class CacheConstants {
+  static const String uId = "uId";
+  static const String city = "city";
+  static const String country = "country";
+}
+
 class Utility {
   static String getUserName({
     required String id,
@@ -13,12 +19,17 @@ class Utility {
     return userName;
   }
 
-  static String getFirstLetterFromUserName(String name) {
-    List<String> names = name.split(" ");
-    String initials = '';
-    for (var i = 0; i < names.length; i++) {
-      initials = names[i];
+  static List<String> getHashTags(String text) {
+    RegExp reg = RegExp(
+        r"([#])\w+|(https?|ftp|file|#)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]*");
+    Iterable<Match> _matches = reg.allMatches(text);
+    List<String> resultMatches = <String>[];
+    for (Match match in _matches) {
+      if (match.group(0)!.isNotEmpty) {
+        var tag = match.group(0);
+        resultMatches.add(tag!);
+      }
     }
-    return initials;
+    return resultMatches;
   }
 }

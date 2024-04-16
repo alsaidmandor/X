@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:x/core/helper/extensions.dart';
 import 'package:x/features/home/ui/widget/home_screen_drawer.dart';
 
+import '../../../core/routing/routes.dart';
 import '../../../core/theming/app_icons.dart';
 import '../../../core/theming/colors.dart';
 import '../../../core/widget/x_logo.dart';
@@ -131,7 +132,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               floatingActionButton: FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.pushNamed(Routes.createPostScreen);
+                },
                 backgroundColor: ColorsManager.mainBlue,
                 child: const Icon(
                   AppIcon.fabTweet,
